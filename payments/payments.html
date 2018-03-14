@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="bower_components/foundation/css/foundation-icons.css" />
+
+<div class="row" ng-controller="PaymentsCtrl">
+
+<div class="large-10 columns">
+<div ng-if="expensesNotPaid.length != 0"> 
+<h3> Your Unpaid Expenses ( {{(totalnotPaidSum| number:2)+"€"}} )</h3>
+	<table>
+		<thead>
+			<tr>
+				<th width="300px"> Name </th>
+				<th width="300px"> Price </th>
+				<th width="250px"> Action </th>
+			</tr>
+		<thead>
+		<tbody>
+			<tr ng-repeat="expenseNotPaid in expensesNotPaid">
+				<td> {{expenseNotPaid.name}} </td>
+				<td> {{(expenseNotPaid.price| number:2)+"€"}} </td>
+				<td><a class="button success" ng-click="payExpense(expenseNotPaid)"><i class="fi-check"></i></a></td>
+			</tr>
+		</tbody>	
+	</table>
+
+</div>
+<div ng-if="expensesNotPaid.length == 0"> 
+<h4> Great! You don't have anything to pay</h3>
+	
+</div>
+<hr>
+<div ng-if="expensesPaid.length != 0"> 
+
+<h3> Your Paid Expenses ( {{(totalPaidSum| number:2)+"€"}} )</h3>
+	<table>
+		<thead>
+			<tr>
+				<th width="300px"> Name </th>
+				<th width="300px"> Price </th>
+				<th width="250px"> Action </th>
+			</tr>
+		<thead>
+		<tbody>
+			<tr ng-repeat="expensePaid in expensesPaid">
+				<td> {{expensePaid.name}} </td>
+				<td> {{(expensePaid.price| number:2)+"€"}} </td>
+				<td><a class="button alert" ng-click="unPayExpense(expensePaid)"><i class="fi-x"></i></a></td>
+			</tr>
+		</tbody>	
+	</table>
+</div>
+<div ng-if="expensesPaid.length == 0"> 
+
+<h3> Your haven't pay anything this month</h3>
+
+
+</div>
+
+
+</div>

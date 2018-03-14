@@ -1,0 +1,77 @@
+<div class="row" ng-controller="ExpensesCtrl">
+
+<div class="large-10 columns">
+
+	<div data-alert ng-show="msg" class="alert-box">
+		{{msg}}
+	</div>
+
+<form ng-submit="addFormSubmit()" ng-show="addFormShow">
+            <h3>Add Expense</h3>
+            <!-- Add Form -->
+            <div class="row">
+                <div class="large-6 columns">
+                  <label>Name:
+                    <input type="text" ng-model="name" placeholder="Expense Name" required />
+                  </label>
+                </div>
+                <div class="large-6 columns">
+                  <label>Price:
+                    <input type="text" ng-model="price" placeholder="Expense Price" ng-pattern="/^\d+(\.\d{1,2})?$/" required />
+                  </label>
+                </div>
+             </div>
+             <div class="row">
+                <div class="large-12 columns">
+                    <input type="submit" value="Add Expense" class="button right" />
+                </div>
+             </div>
+    </form>
+
+
+		<form ng-submit="editFormSubmit()" ng-show="editFormShow">
+		            <h3>Edit Expense</h3>
+		            <!-- Add Form -->
+		            <div class="row">
+		                <div class="large-6 columns">
+		                  <label>Name:
+		                    <input type="text" ng-model="name" placeholder="Expense" required />
+		                  </label>
+		                </div>
+		                <div class="large-6 columns">
+		                  <label>Price:
+		                    <input type="text" ng-model="price" placeholder="Price" ng-pattern="/^\d+(\.\d{1,2})?$/" required />
+		                  </label>
+		                </div>
+		             </div>
+		             <div class="row">
+		                <div class="large-12 columns">
+		                    <input type="submit" value="Update Expense" class="button right" />
+		                </div>
+		             </div>
+		    </form>    
+
+	<h3> Your Expenses ({{expenses.length}})</h3>
+	<table>
+		<thead>
+			<tr>
+				<th width="250px"> Name </th>
+				<th width="250px"> Price </th>
+				<th width="200px"> Action </th>
+			</tr>
+		<thead>
+		<tbody>
+			<tr ng-repeat="expense in expenses">
+				<td> {{expense.name}} </td>
+				<td> {{(expense.price| number:2)+"€"}} </td>
+				<td><a class="button tiny" ng-click="showEditForm(expense)">Edit</a>
+					<a class="button tiny alert" ng-click="removeExpense(expense)">Delete</a></td>
+			</tr>
+		</tbody>	
+	</table>
+</div>
+<div class="small-12 large-2 columns">
+	<a class="button large" ng-click="showAddForm()" ng-hide="addFormShow">+</a>
+	<a class="button large" ng-click="hide()" ng-show="addFormShow">-</a>
+</div>	
+</div>
