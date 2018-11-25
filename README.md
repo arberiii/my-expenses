@@ -1,5 +1,5 @@
 # my-expenses
-An AngularJs app that manages your expenses. It's for one user so in future we should develope this. As front-end framework I used Foundation
+An SPA AngularJs app that manages your expenses. For the moment it doesn't support users feature. As front-end framework I used Foundation
 
 ## [Live demo](https://expenses-c1a2d.firebaseapp.com)
 
